@@ -12,7 +12,7 @@ module.exports.builder = function(yargs) {
       describe: 'Maximum file size to allow for uploads. Note that nginx ' +
         'may have a separate limit, meaning you should change both.'
     , type: 'number'
-    , default: 1 * 1024 * 1024 * 1024
+    , default: 1 * 1024 * 1024 * 1024 * 10
     })
     .option('port', {
       alias: 'p'
