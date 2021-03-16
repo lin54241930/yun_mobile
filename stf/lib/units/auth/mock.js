@@ -82,9 +82,9 @@ module.exports = function(options) {
     app.use(basicAuthMiddleware)
   }
 
-  app.get('/', function(req, res) {
-    res.redirect('/auth/mock/')
-  })
+  // app.get('/', function(req, res) {
+  //   res.redirect('/auth/mock/')
+  // })
 
   app.get('/auth/contact', function(req, res) {
     dbapi.getRootGroup().then(function(group) {
@@ -103,11 +103,11 @@ module.exports = function(options) {
         })
       })
   })
-
+// 页面请求为ip+端口/auth/mock/，打开登陆页面
   app.get('/auth/mock/', function(req, res) {
     res.render('index')
   })
-
+  // 前端请求登陆接口，验证用户名密码是否正确
   app.post('/auth/api/v1/mock', function(req, res) {
     var log = logger.createLogger('auth-mock')
     log.setLocalIdentifier(req.ip)
@@ -129,6 +129,10 @@ module.exports = function(options) {
                 exp: Date.now() + 24 * 3600
               }
             })
+
+            log.info('stf login token: ', urlutil.addParams(options.appUrl, {
+              jwt: token
+            }))
             res.status(200)
               .json({
                 success: true
@@ -157,6 +161,40 @@ module.exports = function(options) {
       default:
         res.send(406)
         break
+    }
+  })
+  app.get('/auth/api/v1/url', function(req, res) {
+    var log = logger.createLogger('auth-api-url')
+    log.setLocalIdentifier(req.ip)
+    var userName = req.query.username
+    log.info('传入的username: ' + userName)
+    if(userName) {
+      var token = jwtutil.encode({
+        payload: {
+          email: userName + '@boke.com'
+          , name: userName
+        }
+        , secret: options.secret
+        , header: {
+          exp: Date.now() + 24 * 3600
+        }
+      })
+      log.info('生成的token ' + token)
+      var respStr = urlutil.addParams(options.appUrl, {
+        jwt: token
+      })
+      log.warn('返回的登录地址 ' + respStr)
+      // 渲染列表页面，支持跨域
+      res.header('Access-Control-Allow-Origin', '*')
+      res.jsonp({url: respStr})
+    }
+    else {
+      res.status(400)
+        .json({
+          success: false
+          , error: 'ValidationError'
+          , validationErrors: err.errors
+        })
     }
   })
 
