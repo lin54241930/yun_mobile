@@ -2,16 +2,7 @@
   <div class="upload-apk">
     <ArrowContainer head-text="上传安装包">
       <div slot="content">
-        <el-tabs v-model="activeNameUpload">
-          <el-tab-pane label="上传安装包" name="upload">
-            <FileUpload
-              v-if="ossData.hasOwnProperty('host')"
-              :ossData="ossData"
-              v-model="uploadFiles"
-              @uploadUrl="uploadUrl"
-            ></FileUpload>
-          </el-tab-pane>
-        </el-tabs>
+        <FileUpload :ossData="ossData" v-model="uploadFiles" @uploadUrl="uploadUrl"></FileUpload>
       </div>
     </ArrowContainer>
     <ArrowContainer head-text="选择安装包">
@@ -145,7 +136,7 @@ export default {
   computed: {
     ...mapState("autotest", ["selectApk"]),
     ossData() {
-      return this.$store.state.project.ossData;
+      return (process.env.LOCAL_FILE_HOST) + "/v1/upfile/pushfile";      // 修改这里，返回服务器地址
     },
     userId() {
       return this.$store.state.login.userid;
@@ -246,7 +237,7 @@ export default {
   },
   watch: {
     uploadFiles(data) {
-      
+
     }
   },
   created() {

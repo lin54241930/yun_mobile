@@ -18,5 +18,6 @@ module.exports = merge(prodEnv, {
   QYWX_APPID: '"xxxx"',
   QYWX_AGENTID: '"xxxx"',
   QYEX_REDIRECT_URI: '"xxxx"',
-  STF_URL:'"http://192.168.1.2:7100"'
+  STF_URL:'"http://192.168.1.2:7100"',
+  LOCAL_FILE_HOST:'"http://192.168.1.2:9042"'
 })

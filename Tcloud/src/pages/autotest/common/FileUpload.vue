@@ -3,7 +3,8 @@
     <el-upload
       class="upload-box"
       drag
-      :action="ossData.host"
+      multiple
+      :action="ossData"
       list-type="text"
       :on-remove="handleRemove"
       :on-success="handleSuccess"
@@ -43,7 +44,7 @@ export default {
       }
     },
     ossData: {
-      type: Object
+      type: String
     },
     readOnly: {
       type: Boolean,
@@ -72,17 +73,17 @@ export default {
     }
   },
   components: {},
-  computed: {
-    uploadParams() {
-      return {
-        OSSAccessKeyId: this.ossData.accessid,
-        policy: this.ossData.policy,
-        signature: this.ossData.signature,
-        key: `${this.ossData.dir}${this.filename}`,
-        success_action_status: 200
-      };
-    }
-  },
+  // computed: {
+  //   uploadParams() {
+  //     return {
+  //       OSSAccessKeyId: this.ossData.accessid,
+  //       policy: this.ossData.policy,
+  //       signature: this.ossData.signature,
+  //       key: `${this.ossData.dir}${this.filename}`,
+  //       success_action_status: 200
+  //     };
+  //   }
+  // },
   methods: {
     // 上传数量超过限制回调
     handleExceed(file, fileList) {
@@ -95,11 +96,13 @@ export default {
     // 上传成功的回调
     handleSuccess(response, file, fileList) {
       console.log("success", response);
-      file.url = `${this.ossData.cdn_host}/${this.uploadParams.key}`;
-      this.uploadfiles.push(file);
+      //file.url = `${this.ossData.cdn_host}/${this.uploadParams.key}`;
+      // 这里的地址为后端获取本地文件的地址，后面的后端改造会讲到
+      file.url = (process.env.BASE_URL) + "/v1/getfile/" + (file.name);
+      //this.uploadfiles.push(file);
       this.fileFlag = false;
       this.isShowUploadfile = true;
-      this.$emit("input", this.uploadfiles);
+      //this.$emit("input", this.uploadfiles);
       // 调用接口，将url传给后台
       this.$emit('uploadUrl', file)
     },
@@ -121,9 +124,9 @@ export default {
       let fileNameSplit = file.name.split(".");
       let fileSuffix = fileNameSplit[fileNameSplit.length - 1];
       if (fileSuffix === "apk") {
-        this.uploadParams.key = `${
-          this.ossData.dir
-        }${generateUUID()}${getSuffix(file.name)}`;
+        // this.uploadParams.key = `${
+        // this.ossData.dir
+        // }${generateUUID()}${getSuffix(file.name)}`;    //  屏蔽这里还是因为原ossData的数据原因
         this.isShowUploadfile = false;
       } else {
         this.$message.warning('暂时只支持android包上传')
@@ -133,7 +136,10 @@ export default {
     // 文件上传的钩子
     handlerUploadProcess(event, file, fileList) {
       this.fileFlag = true;
-      this.fileUploadPercent = file.percentage.toFixed(0) * 1;
+      var i = 0
+      for (i in fileList){
+        this.fileUploadPercent = file.percentage.toFixed(0) * 1;
+      }
     }
   },
   created() {}

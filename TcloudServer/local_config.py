@@ -61,3 +61,6 @@ CORP_ID = 'secret'
 # 企业微信发送url，需要企业进行配置
 QYWXHost = 'https://qywxurl/'
 WX_MESSAGE_URL = ''
+
+# 储存文件到本地的地址
+LOCAL_FOLDER = r'/usr/local/Tcloudfile'
