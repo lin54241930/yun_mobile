@@ -1,14 +1,14 @@
 #!/bin/bash
 list="auth autotest extention flow interface message public tcdevices project jobs"
 
-declare -A map=(["auth"]="9020" ["autotest"]="9022" ["extention"]="9024" ["flow"]="9026" ["interface"]="9028" ["message"]="9030" ["public"]="9034" ["tcdevices"]="9036" ["project"]="9032" ["jobs"]="9038")
+declare -A map=(["auth"]="9020" ["autotest"]="9022" ["extention"]="9024" ["flow"]="9026" ["interface"]="9028" ["message"]="9030" ["public"]="9034" ["tcdevices"]="9036" ["project"]="9032" ["jobs"]="9038" ["upfile"]="9042" ["downloadfile"]="9044")
 
 start_apps(){
     echo Start all apps of tcloud !
     for key in ${!map[@]} ;
     do
         echo start $key : ${map[$key]}
-        nohup python  -m apps.$key.run >logs/$key.log 2>&1 &
+        nohup python3  -m apps.$key.run >logs/$key.log 2>&1 &
     done
 }
 
