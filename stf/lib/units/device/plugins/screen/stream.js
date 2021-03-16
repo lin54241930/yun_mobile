@@ -503,6 +503,11 @@ module.exports = syrup.serial()
         wss.on('connection', function(ws) {
           var id = uuid.v4()
           var pingTimer
+          var lastsenttime = 0
+          // 帧数  默认值
+          var framerate = 15
+          // 压缩比  默认值
+          options.screenJpegQuality = 20
 
           function send(message, options) {
             return new Promise(function(resolve, reject) {
@@ -543,9 +548,13 @@ module.exports = syrup.serial()
           }
 
           function wsFrameNotifier(frame) {
-            return send(frame, {
-              binary: true
-            })
+            if (lastsenttime == 0 || Date.now() - lastsenttime > 1000 / framerate) {
+              // log.info("发送frame数据：",Date.now()-latesenttime)
+              lastsenttime = Date.now()
+              return send(frame, {
+                binary: true
+              })
+            }
           }
 
           // Sending a ping message every now and then makes sure that
@@ -573,6 +582,21 @@ module.exports = syrup.serial()
                   Number(match[3]), Number(match[4]))
                 break
               }
+            }
+            else{
+              // 根据传过来的画质设置改变压缩比和
+              log.info('user set framerate：' + data)
+              framerate = data
+              if(framerate > 30) {
+                options.screenJpegQuality = 80
+              }
+              else if(framerate > 15) {
+                options.screenJpegQuality = 50
+              }
+              else{
+                options.screenJpegQuality = 20
+              }
+              frameProducer.restart()
             }
           })
 

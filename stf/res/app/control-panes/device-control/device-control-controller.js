@@ -144,4 +144,10 @@ module.exports = function DeviceControlCtrl($scope, DeviceService, GroupService,
     }
   }
 
+  $scope.quality = '60'
+  $scope.rate = $scope.quality
+  $scope.test = function() {
+    $scope.rate = $scope.quality
+  }
+
 }

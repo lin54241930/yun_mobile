@@ -279,3 +279,10 @@ device-screen input {
   -ms-transition: none !important;
   transition: none !important;
 }
+
+.screen-quality {
+  float: left !important;
+  margin-top: 10px;
+  text-align: center;
+  margin-right: 5px;
+}

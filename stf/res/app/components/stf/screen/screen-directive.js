@@ -16,6 +16,7 @@ module.exports = function DeviceScreenDirective(
   , scope: {
       control: '&'
     , device: '&'
+    , quality: '='
     }
   , link: function(scope, element) {
       var URL = window.URL || window.webkitURL
@@ -25,6 +26,7 @@ module.exports = function DeviceScreenDirective(
 
       var device = scope.device()
       var control = scope.control()
+      var rate = scope.quality
 
       var input = element.find('input')
 
@@ -186,10 +188,17 @@ module.exports = function DeviceScreenDirective(
 
         function onScreenInterestGained() {
           if (ws.readyState === WebSocket.OPEN) {
+            ws.send(rate)
             ws.send('size ' + adjustedBoundSize.w + 'x' + adjustedBoundSize.h)
             ws.send('on')
           }
         }
+
+        scope.$watch('quality', function(newValue) {
+          // $log.log('In screen-directive: rate change to ' + newValue)
+          rate = newValue
+          onScreenInterestGained()
+        })
 
         function onScreenInterestAreaChanged() {
           if (ws.readyState === WebSocket.OPEN) {
