@@ -109,7 +109,8 @@ module.exports.builder = function(yargs) {
       alias: 't'
     , describe: 'Timeout in seconds for automatic release of inactive devices.'
     , type: 'number'
-    , default: 900
+    , default: 10800  // 此处修改为3个小时不操作自动断开连接
+      // 这里是以秒为单位
     })
     .option('lock-rotation', {
       describe: 'Whether to lock rotation when devices are being used. ' +
