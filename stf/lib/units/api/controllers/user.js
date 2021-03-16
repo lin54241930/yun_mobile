@@ -288,13 +288,13 @@ function remoteConnectUserDeviceBySerial(req, res) {
           })
         }
 
-	datautil.normalize(device, req.user)
-	if (!deviceutil.isOwnedByUser(device, req.user)) {
-          return res.status(403).json({
-            success: false
-          , description: 'Device is not owned by you or is not available'
-          })
-        }
+	// datautil.normalize(device, req.user)
+	// if (!deviceutil.isOwnedByUser(device, req.user)) {
+  //         return res.status(403).json({
+  //           success: false
+  //         , description: 'Device is not owned by you or is not available'
+  //         })
+  //       }
 
         var responseChannel = 'txn_' + uuid.v4()
         req.options.sub.subscribe(responseChannel)
