@@ -200,7 +200,7 @@ class TcDevicesBusiness(object):
             Config.module_type == 2).first()
         stf_token = json.loads(stf_token.content)
         current_app.logger.info(json.dumps(stf_token, ensure_ascii=False))
-        url = stf_token['URL'] + '?name=' + name
+        url = stf_token['URL'] + '?username=' + name
         ret = requests.get(url)
         ret = json.loads(ret.content)
         current_app.logger.info(json.dumps(ret, ensure_ascii=False))

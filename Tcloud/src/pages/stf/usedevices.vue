@@ -194,7 +194,8 @@ export default {
       tcdevicesApi.getTcToken({ name: this.$store.getters.userName }).then(
         res => {
           this.token = res.data.data.token;
-          this.stfurl = `${process.env.STF_URL}?jwt=${this.token}`;
+          // this.stfurl = `${process.env.STF_URL}?jwt=${this.token}`;
+          this.stfurl =  res.data.data.url     //修改这里
           console.log(this.stfurl);
         },
         error => {

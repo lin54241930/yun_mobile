@@ -703,7 +703,8 @@ export default {
           this.token = res.data.data.token;
           console.info(res.data.data);
           console.log("跳转到STF");
-          this.stfurl = `${process.env.STF_URL}?jwt=${this.token}`;
+          // this.stfurl = `${process.env.STF_URL}?jwt=${this.token}`;
+          this.stfurl =  res.data.data.url     //修改这里
           console.log(this.stfurl);
         },
         error => {
