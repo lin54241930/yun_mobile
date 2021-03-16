@@ -9,7 +9,7 @@ module.exports =
 
     var sharedTabs = [
       {
-        title: gettext('Screenshots'),
+        title: '屏幕截图',
         icon: 'fa-camera color-skyblue',
         templateUrl: 'control-panes/screenshots/screenshots.pug',
         filters: ['native', 'web']
@@ -37,6 +37,12 @@ module.exports =
         icon: 'fa-info color-orange',
         templateUrl: 'control-panes/info/info.pug',
         filters: ['native', 'web']
+      },
+      {
+        title: gettext('Logs'),
+        icon: 'fa-list-alt color-red',
+        templateUrl: 'control-panes/logs/logs.pug',
+        filters: ['native', 'web']
       }
     ]
 
@@ -49,14 +55,14 @@ module.exports =
       }
     ].concat(angular.copy(sharedTabs))
 
-    $scope.belowTabs = [
-      {
-        title: gettext('Logs'),
-        icon: 'fa-list-alt color-red',
-        templateUrl: 'control-panes/logs/logs.pug',
-        filters: ['native', 'web']
-      }
-    ].concat(angular.copy(sharedTabs))
+    // $scope.belowTabs = [
+    //   {
+    //     title: gettext('Logs'),
+    //     icon: 'fa-list-alt color-red',
+    //     templateUrl: 'control-panes/logs/logs.pug',
+    //     filters: ['native', 'web']
+    //   }
+    // ].concat(angular.copy(sharedTabs))
 
     $scope.device = null
     $scope.control = null
