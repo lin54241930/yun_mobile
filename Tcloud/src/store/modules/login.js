@@ -54,7 +54,8 @@ export default {
       let EXPIRED = moment.unix(exp).diff(moment().utc(), 'days')
       Cookies.set(JWT_TOKEN, token, {
         expires: EXPIRED,
-        domain: process.env.NODE_ENV === 'development' ? 'localhost' : COOKIE_DOMAIN
+        // domain: process.env.NODE_ENV === 'development' ? 'localhost' : COOKIE_DOMAIN
+        domain: COOKIE_DOMAIN
       })
       localStorage.setItem('jwtToken',token)
       state.userid = decoded.userid || 0
