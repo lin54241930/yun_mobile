@@ -108,4 +108,4 @@ def t_middleware(app):
             if 'admin' in [r.get('name') for r in info.get('role', [])]:
                 g.is_admin = 1
         else:
-            raise NotLoginException
+            return
