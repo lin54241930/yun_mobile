@@ -7,7 +7,7 @@ flask-cors==3.0.2
 gunicorn
 ipython
 pymysql
-pyjwt
+pyjwt==1.7.1
 gevent
 marshmallow-sqlalchemy
 xlrd
@@ -21,7 +21,7 @@ flask-apscheduler
 python-jenkins
 flask-login
 mysqlclient
-pandas==0.24.2
+pandas
 jira
 tornado
 ujson
