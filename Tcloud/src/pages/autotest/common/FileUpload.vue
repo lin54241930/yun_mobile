@@ -61,7 +61,9 @@ export default {
       fileFlag: false,
       isShowUploadfile: true,
       filePreview: false,
-      fileUrl: ""
+      fileUrl: "",
+      uploadParams: {},
+      fileary: []
     };
   },
   watch: {
