@@ -68,7 +68,7 @@ class ToolBusiness(object):
 
             apk_info = {}
 
-            cmd = '/usr/local/bin/aapt dump badging {}'.format(download_apk_name)
+            cmd = 'aapt2 dump badging {}'.format(download_apk_name)
 
             command_process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
