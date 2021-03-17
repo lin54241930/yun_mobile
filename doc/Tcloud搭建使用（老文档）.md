@@ -138,7 +138,7 @@ Ps：其实可以用nohup启动`nohup python3 -m apps.auth.run > logs/auth.log 2
 
 ##### Step 3：数据库配置
 
-
+![配置图](https://github.com/lin54241930/yun_mobile/blob/main/doc/config%E8%A1%A8%E4%B8%ADstf%E7%9A%84%E9%85%8D%E7%BD%AE.png)
 
 很多问题会出在配置数据库这里，因为这里是配置的STF地址和token的一些东西，配错了的话，在云真机里面就会显示不出设备或者是不能正常跳转至STF中
 
@@ -222,7 +222,7 @@ Bearer后面就是token了，这里需要去STF中去获取这个，注意Bearer
 
 我这里修改了一下手机的显示面板，可以根据各自需求增加一些
 
-![image-20201015141730477](/Users/boke/Library/Application Support/typora-user-images/image-20201015141730477.png)
+![效果图](https://github.com/lin54241930/yun_mobile/blob/main/doc/%E4%BA%91%E7%9C%9F%E6%9C%BA%E7%95%8C%E9%9D%A2%E6%95%88%E6%9E%9C%E5%9B%BE.png)
 
 还有一些自己觉得不好的可以自行修改
 
