@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import base64
 import json
 import os
 import re
@@ -14,7 +13,7 @@ import requests
 from flask import request, current_app
 
 from library.oss import oss_upload_monkey_package_picture
-from public_config import TCLOUD_FILE_TEMP_PATH
+from public_config import TCLOUD_FILE_TEMP_PATH, LOCAL_FOLDER, GETIMAGE_URL
 
 
 class ToolBusiness(object):
@@ -37,7 +36,7 @@ class ToolBusiness(object):
     def apk_analysis(cls, apk_download_url, type=1):
         try:
             # type 1 : not save , 2: save to db
-            target_path = "/tmp/packages/"
+            target_path = TCLOUD_FILE_TEMP_PATH
             if not os.path.exists(target_path):
                 os.mkdir(target_path)
 
@@ -96,17 +95,17 @@ class ToolBusiness(object):
                 icon_binary = zip.read(apk_info['icon'])
                 time_now = datetime.now().strftime('%Y%m%d.%H%M%S')
                 picture = f'monkey-{time_now}.png'
-                dir_path = f'{TCLOUD_FILE_TEMP_PATH}/monkey'
+                dir_path = f'{LOCAL_FOLDER}/image'
 
-                if not os.path.exists(TCLOUD_FILE_TEMP_PATH):
-                    os.mkdir(TCLOUD_FILE_TEMP_PATH)
+                if not os.path.exists(LOCAL_FOLDER):
+                    os.mkdir(LOCAL_FOLDER)
 
                 if not os.path.exists(dir_path):
                     os.mkdir(dir_path)
                 with open(f'{dir_path}/{picture}', 'wb') as f:
                     f.write(icon_binary)
 
-                apk_info['icon'] = oss_upload_monkey_package_picture(dir_path, picture)
+                apk_info['icon'] = GETIMAGE_URL + picture
             except Exception as e:
                 current_app.logger.warning(e)
                 current_app.logger.warning(traceback.format_exc())

@@ -62,5 +62,15 @@ CORP_ID = 'secret'
 QYWXHost = 'https://qywxurl/'
 WX_MESSAGE_URL = ''
 
+# 本地接口地址
+LOCAL_URL = 'http://192.168.1.2:9000'
+
 # 储存文件到本地的地址
 LOCAL_FOLDER = r'/usr/local/Tcloudfile'
+GETIMAGE_URL = LOCAL_URL + '/v1/getimage/'
+
+# 临时文件夹路径
+TCLOUD_FILE_TEMP_PATH = LOCAL_FOLDER + r'/tmp'
+
+# 默认的 sft 设备图片
+TCDEVICE_PIC = LOCAL_URL + '/v1/defaultimage/default_devices.png'
