@@ -28,6 +28,23 @@
 - [Mac上STF部署](https://github.com/lin54241930/yun_mobile/blob/main/doc/Mac%E4%B8%8A%E9%83%A8%E7%BD%B2STF.md)
 - [Windows上STF部署](https://github.com/lin54241930/yun_mobile/blob/main/doc/Windows%E4%B8%8A%E9%83%A8%E7%BD%B2STF.md)
 
+### 配置aapt和adb
+- 配置`adb`（STF配置的教程中也有这个的详细教程）
+
+  解压项目目录中`/tools/platform-tools.zip`文件至`/usr/local/`
+
+  `vim /etc/profile`添加一行在最低部` export PATH=$PATH:/usr/local/platform-tools`
+
+  再执行`source /etc/profile`
+
+- 配置`aapt`（如果不配置这个，传包至服务器上，解析包会失败，包名和版本号等信息就无法写入到数据库中）
+
+  同配置`adb`一样，先解压`/tools/build-tools.zip`文件至`/user/local/`
+
+  `vim /etc/profile`添加一行在最低部` export PATH=$PATH:/usr/local/build-tools/30.0.3`
+
+  再执行`source /etc/profile`
+
 ### Tcloud前端部署
 
 - 需要准备的环境
