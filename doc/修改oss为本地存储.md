@@ -529,6 +529,24 @@ def get_file(filename):
 if __name__ == '__main__':
     app.run(debug=True, port=9044)
 ```
+- 修改完上面后，记得再修改一下`tMiddleware.py`，因为这里的抛出`not login`异常会导致文件无法上传成功
+```python
+            # 超时自动包超时错误，返回未登录错误即可
+            except jwt.exceptions.ExpiredSignatureError:
+                raise NotLoginException
+            except Exception:
+                raise NotLoginException
+            g.userid = info.get('userid', 0)
+            g.username = info.get('username', '')
+            g.nickname = info.get('nickname', '')
+            # record_ol_user()
+            # 偷懒，因为admin基本不会修改，所以在这直接分析token而不是查表
+            if 'admin' in [r.get('name') for r in info.get('role', [])]:
+                g.is_admin = 1
+        else:
+            # 这里直接return就行了
+            return
+```
 
 上传文件的端口是9042，下载文件的端口是9044，其实是可以集成到一个端口上的
 
