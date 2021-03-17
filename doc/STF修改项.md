@@ -1,3 +1,13 @@
+## 文档目录（因为某些功能的修改代码篇幅较长）
+- [修复某些电脑上不能正常显示字体的问题](https://github.com/lin54241930/yun_mobile/blob/main/doc/STF%E4%BF%AE%E6%94%B9%E9%A1%B9.md#%E4%BF%AE%E5%A4%8D%E6%9F%90%E4%BA%9B%E7%94%B5%E8%84%91%E4%B8%8A%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%B8%B8%E6%98%BE%E7%A4%BA%E5%AD%97%E4%BD%93%E7%9A%84%E9%97%AE%E9%A2%98)
+- [修改界面](https://github.com/lin54241930/yun_mobile/blob/main/doc/STF%E4%BF%AE%E6%94%B9%E9%A1%B9.md#%E4%BF%AE%E6%94%B9%E7%95%8C%E9%9D%A2)
+- [修改/屏蔽热键](https://github.com/lin54241930/yun_mobile/blob/main/doc/STF%E4%BF%AE%E6%94%B9%E9%A1%B9.md#%E4%BF%AE%E6%94%B9%E5%B1%8F%E8%94%BD%E7%83%AD%E9%94%AE)
+- [修复每次断开连接后会重复装STF服务的BUG](https://github.com/lin54241930/yun_mobile/blob/main/doc/STF%E4%BF%AE%E6%94%B9%E9%A1%B9.md#%E4%BF%AE%E5%A4%8D%E6%AF%8F%E6%AC%A1%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E5%90%8E%E4%BC%9A%E9%87%8D%E5%A4%8D%E8%A3%85stf%E6%9C%8D%E5%8A%A1%E7%9A%84bug)
+- [修改每次断开连接后，安装的包会被清除掉](https://github.com/lin54241930/yun_mobile/blob/main/doc/STF%E4%BF%AE%E6%94%B9%E9%A1%B9.md#%E4%BF%AE%E6%94%B9%E6%AF%8F%E6%AC%A1%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5%E5%90%8E%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%85%E4%BC%9A%E8%A2%AB%E6%B8%85%E9%99%A4%E6%8E%89)
+- [修改STF-IOS版本的安装包导致服务奔溃的问题](https://github.com/lin54241930/yun_mobile/blob/main/doc/STF%E4%BF%AE%E6%94%B9%E9%A1%B9.md#%E4%BF%AE%E6%94%B9stf-ios%E7%89%88%E6%9C%AC%E7%9A%84%E5%AE%89%E8%A3%85%E5%8C%85%E5%AF%BC%E8%87%B4%E6%9C%8D%E5%8A%A1%E5%A5%94%E6%BA%83%E7%9A%84%E9%97%AE%E9%A2%98)
+- [修改默认15分钟不操作自动断开连接](https://github.com/lin54241930/yun_mobile/blob/main/doc/STF%E4%BF%AE%E6%94%B9%E9%A1%B9.md#%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A415%E5%88%86%E9%92%9F%E4%B8%8D%E6%93%8D%E4%BD%9C%E8%87%AA%E5%8A%A8%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5)
+- [添加画质调整功能](https://github.com/lin54241930/yun_mobile/blob/main/doc/STF%E4%BF%AE%E6%94%B9%E9%A1%B9.md#%E6%B7%BB%E5%8A%A0%E7%94%BB%E8%B4%A8%E8%B0%83%E6%95%B4%E5%8A%9F%E8%83%BD)
+
 ## 修改免登陆
 
 文件：`lib/units/auth/mock.js`
@@ -475,7 +485,7 @@ module.exports = angular.module('stf.dashboard', [
 .stf-device-context-menu(ng-transclude, context-menu, data-target='context-menu-{{ $index }}').fill-height
 ```
 
-##修改API中断开设备的逻辑
+## 修改API中断开设备的逻辑
 
 - 未修改之前，断开设备时会去验证操作的那个用户 `Authorization Bearer` 是否和当前的 `Authorization Bearer` 一致
 - 这样就会导致其他用户不能断开设备，会提示 `You cannot release this device. Not owned by you`
