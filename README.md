@@ -294,6 +294,9 @@ server {
 
 }
 ```
+### 启动rethinkdb
+- 直接输入`rethinkdb`启动，占用80端口
+- 指定端口启动`rethinkdb --bind all --cache-size 8192 --http-port 8090`
 
 ### 启动STF
 
