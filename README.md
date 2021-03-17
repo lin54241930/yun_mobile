@@ -38,7 +38,7 @@
 
   找到 `Tcloud/config/dev.env.js `，修改完成后修改 `Tcloud/config/prod.env.js `
 
-  同理，` prod.env.js` 是打包  发布的配置，也就是生成环境下的配置，可自行更改生成环境的IP
+  同理，` prod.env.js` 是打包发布的配置，也就是生产环境下的配置，可自行更改生产环境的IP
 
 ```javascript
 'use strict'
@@ -339,4 +339,14 @@ python -m apps.extention.run
 ...
 以此类推，需要启动apps目录下所有的服务，总共13个
 ```
+### 配置手机图片
+- 将图片上传至OSS或本地，得到图片地址后，手动配置`tc_devicesn_info`表中`pic`字段的值
+- 如需图片请自行寻找，涉及到版权问题暂不提供
 
+### 致谢
+
+- [Tcloud](https://github.com/JunManYuanLong/TcloudServer) ：感谢作者提供源代码支持
+- [stf](https://github.com/mrx1203/stf) : 感谢mrx1203提供的stf_ios方案
+- [DeviceFarmerstf](https://github.com/DeviceFarmer/stf) : 感谢stf作者提供源代码支持
+- [免登陆方案](https://blog.csdn.net/chuowan2555/article/details/100768165) : 感谢文章作者提供免登陆方案
+- [Centos7安装MySQL8.0](https://www.cnblogs.com/yanglang/p/10782941.html) : 感谢文章作者提供安装思路
