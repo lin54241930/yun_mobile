@@ -4,9 +4,9 @@
             <div class="model-name">
                 {{`${deviceData.manufacturer}  ${deviceData.model}`}}
             </div>
-            <div class="model-battery">
+            <!-- <div class="model-battery">
                 <Battery :left-val="deviceData.battery.level"></Battery>
-            </div>
+            </div> -->
         </div>
         <div class="model-content">
             <div class="model-image">

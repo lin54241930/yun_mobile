@@ -119,7 +119,7 @@
             <li
               v-if="item.display.height && item.display.width"
             >分辨率：{{item.display.height}}x{{item.display.width}}</li>
-            <li v-if="item.battery.level">电量：{{item.battery.level}}%</li>
+            <!-- <li v-if="item.battery.level">电量：{{item.battery.level}}%</li> -->
             <li>使用次数：{{item.times}}</li>
             <li>累计使用：{{item.use_time}}分钟</li>
           </ul>
