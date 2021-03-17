@@ -163,9 +163,12 @@ SQLALCHEMY_DATABASE_URI = 'mysql:/root:tc123456@192.168.1.2:3306/demo?charset=ut
 
 
 
-- 找到`/TcloudServer/local_config.py`修改存储文件到本地的地址
+- 找到`/TcloudServer/local_config.py`修改存储文件到本地的地址和本地接口，这里的接口地址是为了获取本地图片
 
 ```python
+# 本地接口地址
+LOCAL_URL = 'http://192.168.1.2:9000'
+
 # 储存文件到本地的地址
 LOCAL_FOLDER = r'/usr/local/Tcloudfile'
 ```
@@ -298,16 +301,16 @@ server {
 
     }
     
-    location /v1/getfile/ {
-            proxy_pass http://127.0.0.1:9044;
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            add_header 'Access-Control-Allow-Origin' '*';
-            add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
-            add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
+    location ~* /v1/(getfile|getimage|defaultimage)/ {
+        proxy_pass http://127.0.0.1:9044;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        add_header 'Access-Control-Allow-Origin' '*';
+        add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
+        add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
 
-        }
+    }
 
 }
 ```
