@@ -2,7 +2,6 @@ import os
 import traceback
 from flask import request, g, current_app
 from public_config import LOCAL_FOLDER
-# 这里的LOCAL_FOLDER是在public_config中配置的，需要自行配置
 
 
 class GetUploadFile(object):

@@ -1,5 +1,5 @@
 from apps.upfile.settings import config
-from flask_cors import CORS    # 这里用到了CORS，不然会出现跨域问题
+from flask_cors import CORS
 if config.SERVER_ENV != 'dev':
     from gevent import monkey
 
