@@ -366,6 +366,9 @@ python -m apps.extention.run
 - 将图片上传至OSS或本地，得到图片地址后，手动配置`tc_devicesn_info`表中`pic`字段的值
 - 如需图片请自行寻找，涉及到版权问题暂不提供
 
+### 配置手机型号
+- 作者原代码中是拼接了`manufacturer`和`model`，这样设备的辨识度不是很高，我修改成配置的方式，只需要像配置设备图片一样手动配置`tc_devicesn_info`表中`comment`字段的值，就可以实现自定义设备名称
+
 ### 致谢
 
 - [Tcloud](https://github.com/JunManYuanLong/TcloudServer) ：感谢作者提供源代码支持
