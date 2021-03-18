@@ -100,7 +100,7 @@
         style="margin-left: 20px"
       >
         <div class="ant-card-head">
-          <div>{{item.manufacturer}} {{item.model}}</div>
+          <div>{{item.comment}}</div>
         </div>
         <div style="height: 160px;margin-top: 15px">
           <!--<img alt="example" class="card_img___1p-OX" src="http://qa.qutoutiao.net/static/mc/img/device/xiaomi_2014813.jpg" />-->

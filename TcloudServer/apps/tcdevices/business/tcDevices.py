@@ -167,6 +167,7 @@ class TcDevicesBusiness(object):
                     devices[i]['times'] = ret_device.times
                     devices[i]['use_time'] = ret_device.use_time
                     devices[i]['pic'] = ret_device.pic
+                    devices[i]['comment'] = ret_device.comment
             if devices[i]['owner'] and 'name' in devices[i]['owner']:
                 devices[i]['nickname'] = nickname_dict.get(devices[i]['owner']['name'], devices[i]['owner']['name'])
 
