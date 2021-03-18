@@ -36,13 +36,12 @@
     <iframe
       style="margin-left:30px;margin-right:60px;"
       v-if="stfurl"
-      name="myiframe"
+      @load="changeHeight"
       id="myiframe"
       :src="srcurl"
       frameborder="0"
       align="left"
-      width="80%"
-      :height="600"
+      width="97%"
       scrolling="no"
     >
       <p>你的浏览器不支持iframe标签</p>
@@ -137,7 +136,21 @@ export default {
         }, 300);
         vm.globalTimer = timer;
         vm.isStart = true;
+
+        function changeHeight(){
+          var deviceHeight = document.documentElement.clientHeight;
+          deviceHeight = deviceHeight - 220;
+          document.getElementById("myiframe").height = deviceHeight + "px"
+        }
+        window.onresize = function(){
+          changeHeight();
+        }
       }
+    },
+    changeHeight: function(){
+      var deviceHeight = document.documentElement.clientHeight;
+          deviceHeight = deviceHeight - 220;
+          document.getElementById("myiframe").height = deviceHeight + "px"
     },
     stopCountFn: function() {
       var vm = this;

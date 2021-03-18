@@ -2,7 +2,7 @@
   <div>
     <iframe
       style="margin-left:30px;margin-right:60px;"
-      v-if="stfurl"
+      v-show="false"
       name="stfiframe"
       id="myiframe"
       :src="stfurl"
