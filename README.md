@@ -18,17 +18,20 @@
 
 请自行修改，STF详细修改见链接：[STF修改项](https://github.com/lin54241930/yun_mobile/blob/main/doc/STF%E4%BF%AE%E6%94%B9%E9%A1%B9.md)
 
-### 本地部署STF
+> 建议新手照着下面文档的顺序来搭建，一步一步搞，如果你是很少用Linux的话，那么建议在这之前先去补一下Linux的基础知识，后续安装起来会轻松很多，如果是大佬，那么安装步骤请随意，怎么方便怎么来都行😁
 
-> 其实STF可以使用docker部署，那样步骤要少很多，不过如果需要二次开发，建议本地部署，这里只提供本地部署的方法，docker部署可自行百度
+## 安装步骤
 
-因为部署的步骤很多，所有部署方法详情请查看文档
+### 一、先准备好后续安装需要的安装环境，详情请见文档 [安装前环境准备](https://github.com/lin54241930/yun_mobile/blob/main/doc/%E5%AE%89%E8%A3%85%E5%89%8D%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87%EF%BC%88centos7.9%E4%B8%BA%E4%BE%8B%EF%BC%89.md)
 
-- [Linux上STF部署](https://github.com/lin54241930/yun_mobile/blob/main/doc/STF%E9%83%A8%E7%BD%B2.xmind)
-- [Mac上STF部署](https://github.com/lin54241930/yun_mobile/blob/main/doc/Mac%E4%B8%8A%E9%83%A8%E7%BD%B2STF.md)
-- [Windows上STF部署](https://github.com/lin54241930/yun_mobile/blob/main/doc/Windows%E4%B8%8A%E9%83%A8%E7%BD%B2STF.md)
+### 二、再就是STF安装前的环境准备，详情请见文档 [搭建STF环境准备](https://github.com/lin54241930/yun_mobile/blob/main/doc/%E6%90%AD%E5%BB%BASTF%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87.md)
 
-### 配置aapt和adb
+### 三、接下来就开始安装我们的关键部件STF，详情请见文档 [STF部署](https://github.com/lin54241930/yun_mobile/blob/main/doc/STF%E9%83%A8%E7%BD%B2.xmind)
+
+1. 这里分两个部署的方法，我吧上面的思维导图文档拆分了下  [Linux下安装STF](https://github.com/lin54241930/yun_mobile/blob/main/doc/Linux%E5%AE%89%E8%A3%85STF.md)
+2. 另一个就是 [Mac下安装STF](https://github.com/lin54241930/yun_mobile/blob/main/doc/Mac%E4%B8%8BSTF%E6%90%AD%E5%BB%BA.md)
+
+### 四、配置`aapt`和`adb`
 - 配置`adb`（STF配置的教程中也有这个的详细教程）
 
   解压项目目录中`/tools/platform-tools.zip`文件至`/usr/local/`
@@ -45,9 +48,9 @@
 
   再执行`source /etc/profile`
 
-### Tcloud前端部署
+### 五、Tcloud前端部署
 
-- 需要准备的环境
+- 需要准备的环境（上面在环境准备已经讲过安装了，这里只是做环境检验）
 
   ``` NodeJs```
 
@@ -88,7 +91,7 @@ module.exports = merge(prodEnv, {
 
 ```
 
-### TcloudServer后端部署
+### 六、TcloudServer后端部署
 
 > 后端部署分为docker部署和本地部署，docker部署虽较为方便，但是不方便二次开发
 >
@@ -98,227 +101,231 @@ module.exports = merge(prodEnv, {
 >
 > 综上所诉还是建议本地部署，这里就不介绍docker的部署方法了，作者的文档中有详细的部署方法
 
-- 需要准备的环境
+1. 需要准备的环境（最前面的步骤已经讲过怎么安装，这里确认下是否安装成功）
 
-  `Nginx`
+   `Nginx`
 
-  `Python3.7`及以上版本
+   `Python3.7`及以上版本
 
-  `MySQL`
+   `MySQL`
 
-- 安装Python依赖
+2. 安装Python依赖
 
-  后端部署的坑在于` pip install` 安装Python依赖，这里会有些坑，不过我都修改了` requirement.txt`里面的内容了
+   后端部署的坑在于` pip install` 安装Python依赖，这里会有些坑，不过我都修改了` requirement.txt`里面的内容了
 
-  现在唯一的难点就在于安装`mysqlclient`
+   现在唯一的难点就在于安装`mysqlclient`
 
-  在`Mac`上安装问题不是很大，配置好`MySQL`后，安装下`mariadb`就基本上可以解决问题
+   在`Mac`上安装问题不是很大，配置好`MySQL`后，安装下`mariadb`就基本上可以解决问题
 
-  但在`Linux`上可能会遇到问题多一点，这里先放一个`Linux`上`MySQL`的安装方法
+   但在`Linux`上可能会遇到问题多一点，如果安装依赖出现了问题，那么记得返回之前面安装MySQL的步骤检查下
 
-  [Linux上安装MySQL](https://github.com/lin54241930/yun_mobile/blob/main/doc/CentOS7%E5%AE%89%E8%A3%85MySQL8.0.pdf)
+   放个地址[Centos7安装MySQL](https://github.com/lin54241930/yun_mobile/blob/main/doc/CentOS7%E5%AE%89%E8%A3%85MySQL8.0.pdf)
 
-- 配置数据库
+3. 配置数据库
 
-  找到`/TcloudServer/local_config.py`修改数据库配置
+   找到`/TcloudServer/local_config.py`修改数据库配置
 
-```python
-# SQL 连接字符串
-SQLALCHEMY_DATABASE_URI = 'mysql://<username>:<password>@<host>:<port>/<db>?charset=utf8'
-# 举个🌰
-SQLALCHEMY_DATABASE_URI = 'mysql:/root:tc123456@192.168.1.2:3306/demo?charset=utf8'
-```
+   ```python
+   # SQL 连接字符串
+   SQLALCHEMY_DATABASE_URI = 'mysql://<username>:<password>@<host>:<port>/<db>?charset=utf8'
+   # 举个🌰
+   SQLALCHEMY_DATABASE_URI = 'mysql:/root:tc123456@192.168.1.2:3306/demo?charset=utf8'
+   ```
+   
+4. 初始化数据库
 
-- 初始化数据库
+   找到数据库init文件` /TcloudServer/deploy/init/init.sql`
 
-  找到数据库init文件` /TcloudServer/deploy/init/init.sql`
+   用`Navicat`或其他数据库可视化软件执行`init.sql`文件即可
 
-  用`Navicat`或其他数据库可视化软件执行`init.sql`文件即可
+5. 修改数据库中表`config`的`stf`的配置
 
-- 修改数据库中表`config`的`stf`的配置
+     执行查询语句
 
-  执行查询语句
+     ```sql
+     SELECT * FROM config WHERE module = 'stf'
+     ```
 
-  ```sql
-  SELECT * FROM config WHERE module = 'stf'
-  ```
+     修改查询出来的三个数据里面字段`content`中的值
 
-  修改查询出来的三个数据里面字段`content`中的值
+     修改`192.168.1.2:7100`为自己STF的地址
 
-  修改`192.168.1.2:7100`为自己STF的地址
+     修改`bearer`后面的`token`，这里的`token`可在`STF`中获取，地址为`http://IP:7100/#!/settings`生成访问令牌
 
-  修改`bearer`后面的`token`，这里的`token`可在`STF`中获取，地址为`http://IP:7100/#!/settings`生成访问令牌
+     ```json
+     {"URL":"http://192.168.1.2:7100/api/v1/devices","headers":{"Authorization": "Bearer 60c67b9246bc45c6922c3b302be48809eb57f647eff647059ce56773d963060c"}}
+     ```
 
-  ```
-  {"URL":"http://192.168.1.2:7100/api/v1/devices","headers":{"Authorization": "Bearer 60c67b9246bc45c6922c3b302be48809eb57f647eff647059ce56773d963060c"}}
-  ```
+     ```json
+     {"URL":"http://192.168.1.2:7100/auth/api/v1/url","headers":{"Authorization": "Bearer 60c67b9246bc45c6922c3b302be48809eb57f647eff647059ce56773d963060c"}}
+     ```
 
-  ```
-  {"URL":"http://192.168.1.2:7100/auth/api/v1/url","headers":{"Authorization": "Bearer 60c67b9246bc45c6922c3b302be48809eb57f647eff647059ce56773d963060c"}}
-  ```
+     ```json
+     {"URL":"http://192.168.1.2:7100/api/v1/user/devices/","headers":{"Authorization": "Bearer 60c67b9246bc45c6922c3b302be48809eb57f647eff647059ce56773d963060c"}}
+     ```
 
-  ```
-  {"URL":"http://192.168.1.2:7100/api/v1/user/devices/","headers":{"Authorization": "Bearer 60c67b9246bc45c6922c3b302be48809eb57f647eff647059ce56773d963060c"}}
-  ```
+   
 
+6. 找到`/TcloudServer/local_config.py`修改存储文件到本地的地址和本地接口，这里的接口地址是为了获取本地图片
 
+   ```python
+   # 本地接口地址
+   LOCAL_URL = 'http://192.168.1.2:9000'
+   
+   # 储存文件到本地的地址
+   LOCAL_FOLDER = r'/usr/local/Tcloudfile'
+   ```
 
-- 找到`/TcloudServer/local_config.py`修改存储文件到本地的地址和本地接口，这里的接口地址是为了获取本地图片
+7. 配置`Nginx`
 
-```python
-# 本地接口地址
-LOCAL_URL = 'http://192.168.1.2:9000'
+     我在作者原基础上加了个9044端口，因为下载文件需要用到这个
 
-# 储存文件到本地的地址
-LOCAL_FOLDER = r'/usr/local/Tcloudfile'
-```
+   ```nginx
+   server {
+       listen 9000;
+       server_name 127.0.0.1 localhost;
+   
+     location /v1/datashow/ {
+           proxy_pass http://127.0.0.1:9022;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           add_header 'Access-Control-Allow-Origin' '*';
+           add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
+           add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
+   
+       }
+       location /v1/jobs/ {
+           proxy_pass http://127.0.0.1:9038;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           add_header 'Access-Control-Allow-Origin' '*';
+           add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
+           add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
+   
+       }
+          location /v1/message/ {
+           proxy_pass http://127.0.0.1:9030;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           add_header 'Access-Control-Allow-Origin' '*';
+           add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
+           add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
+   
+       }
+   
+       location /v1/tcdevices/ {
+           proxy_pass http://127.0.0.1:9036;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           add_header 'Access-Control-Allow-Origin' '*';
+           add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
+           add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
+   
+       }
+   
+       location  /v1/public/ {
+           proxy_pass http://127.0.0.1:9034;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           add_header 'Access-Control-Allow-Origin' '*';
+           add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
+           add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
+   
+       }
+   
+       location  /v1/monkey/ {
+           proxy_pass http://127.0.0.1:9022;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           add_header 'Access-Control-Allow-Origin' '*';
+           add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
+           add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
+   
+       }
+   
+       location ~* /v1/(flow|deploy)/ {
+           proxy_pass http://127.0.0.1:9026;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           add_header 'Access-Control-Allow-Origin' '*';
+           add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
+           add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
+   
+       }
+   
+       location ~* /v1/(cidata|tool)/ {
+           proxy_pass http://127.0.0.1:9024;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           add_header 'Access-Control-Allow-Origin' '*';
+           add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
+           add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
+   
+       }
+   
+       location ~* /v1/interface.* {
+           proxy_pass http://127.0.0.1:9028;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           add_header 'Access-Control-Allow-Origin' '*';
+           add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
+           add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
+   
+       }
+   
+       location ~* /v1/(user|track|role|ability|feedback|wxlogin)/ {
+           proxy_pass http://127.0.0.1:9020;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           add_header 'Access-Control-Allow-Origin' '*';
+           add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
+           add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
+   
+       }
+   
+       location / {
+           proxy_pass http://127.0.0.1:9032;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           add_header 'Access-Control-Allow-Origin' '*';
+           add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
+           add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
+   
+       }
+       
+       location ~* /v1/(getfile|getimage|defaultimage)/ {
+           proxy_pass http://127.0.0.1:9044;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           add_header 'Access-Control-Allow-Origin' '*';
+           add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
+           add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
+   
+       }
+   
+   }
+   ```
 
-- 配置`Nginx`
+## 开始启动
 
-  我在作者原基础上加了个9044端口，因为下载文件需要用到这个
+### 一、启动rethinkdb
 
-```
-server {
-    listen 9000;
-    server_name 127.0.0.1 localhost;
-
-  location /v1/datashow/ {
-        proxy_pass http://127.0.0.1:9022;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        add_header 'Access-Control-Allow-Origin' '*';
-        add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
-        add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
-
-    }
-    location /v1/jobs/ {
-        proxy_pass http://127.0.0.1:9038;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        add_header 'Access-Control-Allow-Origin' '*';
-        add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
-        add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
-
-    }
-       location /v1/message/ {
-        proxy_pass http://127.0.0.1:9030;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        add_header 'Access-Control-Allow-Origin' '*';
-        add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
-        add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
-
-    }
-
-    location /v1/tcdevices/ {
-        proxy_pass http://127.0.0.1:9036;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        add_header 'Access-Control-Allow-Origin' '*';
-        add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
-        add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
-
-    }
-
-    location  /v1/public/ {
-        proxy_pass http://127.0.0.1:9034;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        add_header 'Access-Control-Allow-Origin' '*';
-        add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
-        add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
-
-    }
-
-    location  /v1/monkey/ {
-        proxy_pass http://127.0.0.1:9022;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        add_header 'Access-Control-Allow-Origin' '*';
-        add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
-        add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
-
-    }
-
-    location ~* /v1/(flow|deploy)/ {
-        proxy_pass http://127.0.0.1:9026;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        add_header 'Access-Control-Allow-Origin' '*';
-        add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
-        add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
-
-    }
-
-    location ~* /v1/(cidata|tool)/ {
-        proxy_pass http://127.0.0.1:9024;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        add_header 'Access-Control-Allow-Origin' '*';
-        add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
-        add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
-
-    }
-
-    location ~* /v1/interface.* {
-        proxy_pass http://127.0.0.1:9028;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        add_header 'Access-Control-Allow-Origin' '*';
-        add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
-        add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
-
-    }
-
-    location ~* /v1/(user|track|role|ability|feedback|wxlogin)/ {
-        proxy_pass http://127.0.0.1:9020;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        add_header 'Access-Control-Allow-Origin' '*';
-        add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
-        add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
-
-    }
-
-    location / {
-        proxy_pass http://127.0.0.1:9032;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        add_header 'Access-Control-Allow-Origin' '*';
-        add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
-        add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
-
-    }
-    
-    location ~* /v1/(getfile|getimage|defaultimage)/ {
-        proxy_pass http://127.0.0.1:9044;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        add_header 'Access-Control-Allow-Origin' '*';
-        add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, projectid';
-        add_header 'Access-Control-Allow-Methods' 'POST, GET, DELETE, OPTIONS';
-
-    }
-
-}
-```
-### 启动rethinkdb
 - 直接输入`rethinkdb`启动，占用80端口
 - 指定端口启动`rethinkdb --bind all --cache-size 8192 --http-port 8090`
 
-### 启动STF
+### 二、启动STF
 
 `cd`到`stf/bin`目录下
 
@@ -328,15 +335,15 @@ server {
 ./stf local --public-ip 192.168.1.2 --allow-remote
 ```
 
-### 启动`Tcloud`前端
+### 三、启动`Tcloud`前端
 
-`cd`到`Tcloud/`目录下
+> 有小伙伴在问前端怎么打包，其实我也不是专业的前端人员，可能用到的方法不是很标准，不过能用就行😁
 
-```
-npm run dev
-```
+1. 开发环境启动
+   - `cd`到`Tcloud/`目录下执行`npm run dev`即可
+2. 需要打包发布到正式环境详情请见文档 [Tcloud前端打包发布](https://github.com/lin54241930/yun_mobile/blob/main/doc/Tcloud%E5%89%8D%E7%AB%AF%E6%89%93%E5%8C%85%E5%8F%91%E5%B8%83.md)
 
-### 启动TcloudServer后端
+### 四、启动TcloudServer后端
 
 `cd`到`TcloudServer/`目录下
 
@@ -362,14 +369,17 @@ python -m apps.extention.run
 ...
 以此类推，需要启动apps目录下所有的服务，总共13个
 ```
-### 配置手机图片
+## 优化显示
+
+### 一、配置手机图片
+
 - 将图片上传至OSS或本地，得到图片地址后，手动配置`tc_devicesn_info`表中`pic`字段的值
 - 如需图片请自行寻找，涉及到版权问题暂不提供
 
-### 配置手机型号
+### 二、配置手机型号
 - 作者原代码中是拼接了`manufacturer`和`model`，这样设备的辨识度不是很高，我修改成配置的方式，只需要像配置设备图片一样手动配置`tc_devicesn_info`表中`comment`字段的值，就可以实现自定义设备名称
 
-### 致谢
+## 致谢
 
 - [Tcloud](https://github.com/JunManYuanLong/TcloudServer) ：感谢作者提供源代码支持
 - [stf](https://github.com/mrx1203/stf) : 感谢mrx1203提供的stf_ios方案
