@@ -60,36 +60,36 @@
 
   同理，` prod.env.js` 是打包发布的配置，也就是生产环境下的配置，可自行更改生产环境的IP
 
-```javascript
-'use strict'
-const merge = require('webpack-merge')
-const prodEnv = require('./prod.env')
+  ```javascript
+  'use strict'
+  const merge = require('webpack-merge')
+  const prodEnv = require('./prod.env')
 
-module.exports = merge(prodEnv, {
-  NODE_ENV: '"development"',
-  // 接口地址配置
-  // 修改这里的配置为后端接口的配置
-  BASE_URL: '"http://192.168.1.2:9000"',
-  //ws 服务的地址配置
-  WS_BASE_URL:'"ws://xxxx"',
-  //cookie 的过期时间
-  COOKIE_EXPIRED: 14,
-  //cookie 域名
-  // 修改这里的IP为启动前端的服务器IP
-  COOKIE_DOMAIN: '"192.168.1.2"',
-  //cookie 存储前缀
-  COOKIE_SUFFIX: '"_TCLOUD_DEV"',
-  //企业微信扫码登录的相关配置
-  QYWX_APPID: '"xxxx"',
-  QYWX_AGENTID: '"xxxx"',
-  QYEX_REDIRECT_URI: '"xxxx"',
-  // 修改这里的地址为STF的地址，如果没有先配置好STF可以先配置上，后续再改
-  STF_URL:'"http://192.168.1.2:7100"',
-  // 修改这里的地址为后端服务器IP:9042这里是为了修改OSS为本地存储而添加的一个接口
-  LOCAL_FILE_HOST:'"http://192.168.1.2:9042"'
-})
+  module.exports = merge(prodEnv, {
+    NODE_ENV: '"development"',
+    // 接口地址配置
+    // 修改这里的配置为后端接口的配置
+    BASE_URL: '"http://192.168.1.2:9000"',
+    //ws 服务的地址配置
+    WS_BASE_URL:'"ws://xxxx"',
+    //cookie 的过期时间
+    COOKIE_EXPIRED: 14,
+    //cookie 域名
+    // 修改这里的IP为启动前端的服务器IP
+    COOKIE_DOMAIN: '"192.168.1.2"',
+    //cookie 存储前缀
+    COOKIE_SUFFIX: '"_TCLOUD_DEV"',
+    //企业微信扫码登录的相关配置
+    QYWX_APPID: '"xxxx"',
+    QYWX_AGENTID: '"xxxx"',
+    QYEX_REDIRECT_URI: '"xxxx"',
+    // 修改这里的地址为STF的地址，如果没有先配置好STF可以先配置上，后续再改
+    STF_URL:'"http://192.168.1.2:7100"',
+    // 修改这里的地址为后端服务器IP:9042这里是为了修改OSS为本地存储而添加的一个接口
+    LOCAL_FILE_HOST:'"http://192.168.1.2:9042"'
+  })
 
-```
+  ```
 
 ### 六、TcloudServer后端部署
 
