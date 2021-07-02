@@ -2,13 +2,13 @@
 
 ## 一、源码安装
 
-- 去GitHub上手动下载stf源码
+- （方法一）去GitHub上手动下载stf源码（这种方式可以获取到最新的stf但是需要修改stf源代码才能适配Tcloud）
   - https://github.com/DeviceFarmer/stf
 
-- 使用git clone下载到服务器
+  - 使用git clone下载到服务器
   - `git clone https://github.com/DeviceFarmer/stf.git`
-
-- `cd stf`
+  - `cd stf`
+- （方法二）直接进入到`yun_mobile/stf`目录下（这里的stf是我针对Tcloud修改过的，npm install后就可直接使用，无需修改stf源代码，修改详情见https://github.com/lin54241930/yun_mobile/blob/main/doc/STF%E4%BF%AE%E6%94%B9%E9%A1%B9.md）
 
 - 进行安装
 
